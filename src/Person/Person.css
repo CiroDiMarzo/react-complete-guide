@@ -7,13 +7,6 @@
     text-align: center;
 }
 
-.warning-background {
-  background-color: orange;
-  margin: 15px auto;
-  padding: 60px;
-  min-width: 100px;
-}
-
 /* @media (min-width: 500px) {
     .Person {
         width: 450px;
