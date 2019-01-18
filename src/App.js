@@ -105,6 +105,7 @@ class App extends Component {
         <div className="App">
           <h1>Hi I'm a react app</h1>
           <p className={className}>This is really working!</p>
+          <div className="warning-background">Warning</div>
           <button 
             style={style} 
             onClick={this.togglePersonsHandler}>
