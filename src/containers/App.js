@@ -17,7 +17,16 @@ class App extends Component {
       showPersons: false
     };
 
+    console.log('[App.js] inside constructor()');
     // never reach out to a web server during the constructor execution
+  }
+
+  componentWillMount() {
+      console.log('[App.js] inside componentWillMount()');
+  }
+
+  componentDidMount() {
+      console.log('[App.js] inside componentDidMount()');
   }
 
   nameChangedHandler = (event, id) => {
@@ -38,10 +47,13 @@ class App extends Component {
     });
   }
 
-  deletePersonHandler = (personIndex) => {
+  deletePersonHandler = (id) => {
     //const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
-    persons.splice(personIndex, 1);
+
+    const index = persons.findIndex(p => p.id === id);
+    persons.splice(index, 1);
+
     this.setState({
       persons: persons
     });
@@ -55,6 +67,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] inside render()');
     let persons = null;
     if (this.state.showPersons) {
       persons = (
