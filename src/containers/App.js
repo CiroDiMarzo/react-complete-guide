@@ -3,7 +3,7 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import Aux from "../hoc/Auxiliary";
 import withClass from "../hoc/withClass";
-import classes from "./App.css";
+import classes from "./App.css"
 
 class App extends Component {
 
@@ -16,7 +16,8 @@ class App extends Component {
         { id: 'qwe', name: 'Stephanie', age: 26 }
       ],
       otherState: 'some other value',
-      showPersons: false
+      showPersons: false,
+      toggleClickedCounter: 0
     };
 
     console.log('[App.js] inside constructor()');
@@ -63,8 +64,11 @@ class App extends Component {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({
-      showPersons: !doesShow
+    this.setState((prevState, props) => {
+      return {
+        showPersons: !doesShow,
+        toggleClickedCounter: prevState.toggleClickedCounter + 1
+      }
     });
   }
 
