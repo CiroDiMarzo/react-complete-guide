@@ -7,26 +7,27 @@
 font-weight: bold;
 }
 
-.Cockpit button {
-border: 1px solid blue;
-padding: 16px;
-background-color: green;
-font: inherit;
-color: white;
+.Button {
+  border: 1px solid blue;
+  padding: 16px;
+  background-color: green;
+  font: inherit;
+  color: white;
+  transition: background-color .3s, color .3s
 }
 
-.Cockpit button:hover {
-background-color: lightgreen;
-color: black;
-cursor: pointer;
+.Button:hover {
+  /* background-color: lightgreen; */
+  color: black;
+  cursor: pointer;
 }
 
-.Cockpit button.Red {
-background-color: red;
+.Button.Red {
+  background-color: red;
 }
 
-.Cockpit button.Red:hover {
-background-color: salmon;
-color: black;
-cursor: pointer;
+.Button.Red:hover {
+  /* background-color: salmon; */
+  color: black;
+  cursor: pointer;
 }

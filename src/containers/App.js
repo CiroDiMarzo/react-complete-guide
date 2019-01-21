@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import classes from './App.css';
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import Aux from "../hoc/Auxiliary";
+import withClass from "../hoc/withClass";
+import classes from "./App.css";
 
 class App extends Component {
 
@@ -78,14 +80,14 @@ class App extends Component {
     }
 
     return (
-      <div className={classes.App}>
+      <Aux>
         <Cockpit 
           appTitle={this.props.title}
           showPersons={this.state.showPersons}
           persons={this.state.persons} 
           clicked={this.togglePersonsHandler} />
         { persons }
-      </div>
+      </Aux>
     );
 
     // return React.createElement('div', {className: 'App'}, 
@@ -93,4 +95,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withClass(App, classes.App);

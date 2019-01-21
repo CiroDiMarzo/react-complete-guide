@@ -1,13 +1,14 @@
 import React from "react";
 import classes from './Cockpit.css'
+import Aux from "../../hoc/Auxiliary";
 
 const cockpit = (props) => {
 
     const assignedClasses = [];
-    let buttonClass = null;
+    let buttonClass = [classes.Button];
 
     if (props.showPersons) {
-        buttonClass = classes.Red;
+        buttonClass = [classes.Button, classes.Red];
     }
 
     if (props.persons.length <= 2) {
@@ -17,18 +18,17 @@ const cockpit = (props) => {
       assignedClasses.push(classes.bold);
     }
 
-    let className = assignedClasses.join(' ');
-
     return (
-        <div className={classes.Cockpit}>
+        <Aux>
             <h1>{props.appTitle}</h1>
-            <p className={className}>This is really working!</p>
+            <p className={assignedClasses.join(' ')}>This is really working!</p>
             <button 
                 onClick={props.clicked}
-                className={buttonClass}>
+                className={buttonClass.join(' ')}>
                 Toggle Persons
             </button>
-        </div>);
+        </Aux>
+    );
 };
 
 export default cockpit;
