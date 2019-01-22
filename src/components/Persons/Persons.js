@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Person from "./Person/Person";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import classes from './Persons.css';
 
 class Persons extends Component {
   constructor(props) {
@@ -17,17 +19,34 @@ class Persons extends Component {
 
   render() {
     console.log('[Persons.js] inside render()');
-    return this.props.persons.map((person) => {
-        return (
-          <Person 
-            click={(key) => this.props.clicked(key)}
-            name={person.name}
-            age={person.age}
-            key={person.id}
-            keyValue={person.id}
-            changed={(event) => this.props.changed(event, person.id)} />
-        );
-      })
+    return (
+        <TransitionGroup>
+            {this.props.persons.map((person, index) => {
+            return (
+                <CSSTransition 
+                    key={person.id}
+                    timeout={400}
+                    classNames={{
+                        enter: classes.personEnter,
+                        enterActive: classes.personEnterActive,
+                        exit: classes.personExit,
+                        exitActive: classes.personExitActive
+                    }}
+                    onEnter={() => console.log('--onEnter')}
+                    onEntering={() => console.log('--onEntering')}
+                    onEntered={() => console.log('--onEntered')}>
+                    <Person 
+                        click={(key) => this.props.clicked(key)}
+                        name={person.name}
+                        age={person.age}
+                        keyValue={person.id}
+                        position={index}
+                        changed={(event) => this.props.changed(event, person.id)} />
+                </CSSTransition>
+            );
+        })}
+        </TransitionGroup>
+      )
     }
 }
 

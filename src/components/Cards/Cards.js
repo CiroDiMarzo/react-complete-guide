@@ -10,7 +10,7 @@ class Cards extends Component {
         this.state = {cards: []};
         this.state.display = false;
     }
-
+    
     onAddClicked = () => {
         const cardsCopy = [...this.state.cards];
         cardsCopy.push(this.createCard());

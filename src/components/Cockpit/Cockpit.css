@@ -15,7 +15,8 @@ font-weight: bold;
   font: inherit;
   color: white;
   border-radius: 4px;
-  transition: background-color .3s, color .3s
+  transition: background-color .3s, color .3s;
+  margin-right: 8px;
 }
 
 .Button:hover {

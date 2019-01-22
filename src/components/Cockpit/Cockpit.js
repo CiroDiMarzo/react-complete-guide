@@ -27,6 +27,11 @@ const cockpit = (props) => {
                 className={buttonClass.join(' ')}>
                 Toggle Persons
             </button>
+            <button 
+                onClick={props.addClicked}
+                className={buttonClass.join(' ')}>
+                Add Person
+            </button>
         </Aux>
     );
 };

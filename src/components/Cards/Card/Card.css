@@ -7,9 +7,9 @@
     margin-left:15px;
     background-color: white;
     cursor: pointer;
-    transition: all .3s ease-out;
     border-radius: 4px;
-    color: rgb(153, 153, 153)
+    color: rgb(153, 153, 153);
+    transition: all .3s ease-out
 }
 
 .card:hover {

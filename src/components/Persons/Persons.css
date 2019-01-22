@@ -1,0 +1,39 @@
+.personEnter {
+    opacity: 0;
+    transform: translateX(-50%)
+}
+
+.personEnterActive {
+    animation: personEntering .4s ease-in forwards;
+}
+
+.personExit {
+    opacity: 1;
+    transform: translateX(0%)
+}
+
+.personExitActive {
+    animation: personExiting .4s ease-out forwards;
+}
+
+@keyframes personEntering {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%)
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%)
+    }
+}
+
+@keyframes personExiting {
+    0% {
+        opacity: 1;
+        transform: translateX(0%)
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%)
+    }
+}
