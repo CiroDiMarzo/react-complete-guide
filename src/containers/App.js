@@ -5,6 +5,8 @@ import Aux from "../hoc/Auxiliary";
 import withClass from "../hoc/withClass";
 import classes from "./App.css"
 
+import Cards from "../components/Cards/Cards";
+
 class App extends Component {
 
   constructor(props) {
@@ -20,16 +22,16 @@ class App extends Component {
       toggleClickedCounter: 0
     };
 
-    console.log('[App.js] inside constructor()');
+    // console.log('[App.js] inside constructor()');
     // never reach out to a web server during the constructor execution
   }
 
   componentWillMount() {
-      console.log('[App.js] inside componentWillMount()');
+      // console.log('[App.js] inside componentWillMount()');
   }
 
   componentDidMount() {
-      console.log('[App.js] inside componentDidMount()');
+      // console.log('[App.js] inside componentDidMount()');
   }
 
   nameChangedHandler = (event, id) => {
@@ -73,7 +75,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('[App.js] inside render()');
+    // console.log('[App.js] inside render()');
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -85,6 +87,7 @@ class App extends Component {
 
     return (
       <Aux>
+        <Cards></Cards>
         <Cockpit 
           appTitle={this.props.title}
           showPersons={this.state.showPersons}

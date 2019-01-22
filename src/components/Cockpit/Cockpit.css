@@ -11,13 +11,14 @@ font-weight: bold;
   border: 1px solid blue;
   padding: 16px;
   background-color: green;
+  box-shadow: 2px 2px 4px #aaa;
   font: inherit;
   color: white;
+  border-radius: 4px;
   transition: background-color .3s, color .3s
 }
 
 .Button:hover {
-  /* background-color: lightgreen; */
   color: black;
   cursor: pointer;
 }
@@ -27,7 +28,6 @@ font-weight: bold;
 }
 
 .Button.Red:hover {
-  /* background-color: salmon; */
   color: black;
   cursor: pointer;
 }

@@ -1,0 +1,67 @@
+.cardContainer {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+}
+
+.addButton {
+    margin: 15px;
+    width: 100px;
+    height: 30px;
+}
+
+.fadeEnter {
+    opacity: 0;
+    transform: translateY(-100%)
+}
+
+.fadeEnterActive {
+    opacity: 1;
+    /* transform: translateY(0);
+    transition: all .3s ease-out */
+    animation: cardEnters 0.4s ease-out forwards;
+}
+
+.fadeExit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.fadeExitActive {
+    opacity: 0;
+    /* transform: translateY(-100%);
+    transition: all .3s ease-out */
+    animation: cardExits 0.4s ease-out forwards;
+}
+
+@keyframes cardEnters {
+    0% {
+        opacity: 0;
+        transform: translateY(60%);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes cardExits {
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    50% {
+        opacity: .8;
+        transform: translateY(-20%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(60%);
+    }
+}
