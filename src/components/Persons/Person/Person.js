@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import withClass from '../../../hoc/withClass';
 import Aux from "../../../hoc/Auxiliary";
 import classes from "./Person.css";
 import PropTypes from "prop-types";
 import AuthContext from "../../../auth-context";
 
-class Person extends Component {
+class Person extends PureComponent {
     static contextType = AuthContext;
 
     constructor(props) {
