@@ -9,4 +9,4 @@ const card = (props) => {
     )
 }
 
-export default card;
+export default React.memo(card);
