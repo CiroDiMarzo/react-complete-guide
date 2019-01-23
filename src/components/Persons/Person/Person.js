@@ -8,6 +8,7 @@ class Person extends Component {
     constructor(props) {
         super(props);
         console.log('[Person.js] inside constructor()');
+        this.inputElelement = React.createRef();
     }
 
     componentWillMount = () => {
@@ -29,7 +30,7 @@ class Person extends Component {
                 <p onClick={() => this.props.click(this.props.keyValue)}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                 <p>{this.props.children}</p>
                 <input 
-                    ref={(input) => this.inputElelement = input}
+                    ref={this.inputElelement}
                     type="text" 
                     onChange={this.props.changed} 
                     value={this.props.name} />
