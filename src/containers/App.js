@@ -13,8 +13,8 @@ class App extends Component {
     super(props);
     this.state = {
       persons: [
-        // { id: 'rwe', name: 'Max', age: 28},
-        // { id: 'few', name: 'Manu', age: 29},
+        { id: 'rwe', name: 'Max', age: 28},
+        { id: 'few', name: 'Manu', age: 29},
         { id: 'qwe', name: 'Stephanie', age: 26 }
       ],
       otherState: 'some other value',
@@ -83,12 +83,13 @@ class App extends Component {
   render() {
     // console.log('[App.js] inside render()');
     let persons = null;
+    if (this.state.showPersons) {
       persons = (
         <Persons persons={this.state.persons}
-          showPersons={this.state.showPersons}
           clicked={this.deletePersonHandler} 
           changed={this.nameChangedHandler} />
-      );
+      ); 
+    }
 
     return (
       <Aux>

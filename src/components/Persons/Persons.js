@@ -25,7 +25,7 @@ class Persons extends Component {
             return (
                 <CSSTransition 
                     key={person.id}
-                    timeout={400}
+                    timeout={600}
                     classNames={{
                         enter: classes.personEnter,
                         enterActive: classes.personEnterActive,
