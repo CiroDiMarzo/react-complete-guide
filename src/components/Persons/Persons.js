@@ -7,6 +7,7 @@ class Persons extends Component {
   constructor(props) {
       super(props);
       console.log('[Persons.js] inside constructor()');
+      this.lastPersonRef = React.createRef();
   }
 
   componentWillMount() {
@@ -15,6 +16,7 @@ class Persons extends Component {
 
   componentDidMount() {
       console.log('[Persons.js] inside componentDidMount()');
+      this.lastPersonRef.current.focus();
   }
 
   render() {
@@ -31,12 +33,10 @@ class Persons extends Component {
                         enterActive: classes.personEnterActive,
                         exit: classes.personExit,
                         exitActive: classes.personExitActive
-                    }}
-                    onEnter={() => console.log('--onEnter')}
-                    onEntering={() => console.log('--onEntering')}
-                    onEntered={() => console.log('--onEntered')}>
+                    }}>
                     <Person 
                         click={(key) => this.props.clicked(key)}
+                        ref={this.lastPersonRef}
                         name={person.name}
                         age={person.age}
                         keyValue={person.id}
