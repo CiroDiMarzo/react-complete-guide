@@ -1,47 +1,51 @@
-import React from "react";
+import React, { Component } from "react";
 import classes from './Cockpit.css'
 import Aux from "../../hoc/Auxiliary";
-import { AuthContext } from "../../containers/App";
+import AuthContext from "../../auth-context";
 
-const cockpit = (props) => {
+class Cockpit extends Component 
+{
+    static contextType = AuthContext;
 
-    const assignedClasses = [];
-    let buttonClass = [classes.Button];
-
-    if (props.showPersons) {
-        buttonClass = [classes.Button, classes.Red];
+    render() {
+        const assignedClasses = [];
+        let buttonClass = [classes.Button];
+    
+        if (this.props.showPersons) {
+            buttonClass = [classes.Button, classes.Red];
+        }
+    
+        if (this.props.persons.length <= 2) {
+          assignedClasses.push(classes.red);
+        }
+        
+        if (this.props.persons.length <= 1) {
+          assignedClasses.push(classes.bold);
+        }
+    
+        return (
+            <Aux>
+                <h1>{this.props.appTitle}</h1>
+                <p className={assignedClasses.join(' ')}>This is really working!</p>
+                <button 
+                    onClick={this.props.clicked}
+                    className={buttonClass.join(' ')}>
+                    Toggle Persons
+                </button>
+                        {
+                            this.context.isAuth 
+                            ? (<button className={buttonClass.join(' ')} onClick={this.context.toggleAuth}>Logout</button>)
+                            : (<button className={buttonClass.join(' ')} onClick={this.context.toggleAuth}>Login</button>)
+                        }
+                <button 
+                    onClick={this.props.addClicked}
+                    className={buttonClass.join(' ')}>
+                    Add Person
+                </button>
+            </Aux>
+        );
     }
+}
 
-    if (props.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if (props.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
-    }
 
-    return (
-        <Aux>
-            <h1>{props.appTitle}</h1>
-            <p className={assignedClasses.join(' ')}>This is really working!</p>
-            <button 
-                onClick={props.clicked}
-                className={buttonClass.join(' ')}>
-                Toggle Persons
-            </button>
-            <AuthContext.Consumer>
-            {
-                (auth) => 
-                    auth ? (<button className={buttonClass.join(' ')} onClick={props.loginClicked}>Logout</button>)
-                        : (<button className={buttonClass.join(' ')} onClick={props.loginClicked}>Login</button>)
-            }
-            </AuthContext.Consumer>
-            <button 
-                onClick={props.addClicked}
-                className={buttonClass.join(' ')}>
-                Add Person
-            </button>
-        </Aux>
-    );
-};
-
-export default cockpit;
+export default Cockpit;

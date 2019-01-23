@@ -7,9 +7,10 @@ import classes from "./App.css"
 
 import Cards from "../components/Cards/Cards";
 
-export const AuthContext = React.createContext(false)
+import AuthContext from '../auth-context';
 
 class App extends Component {
+  static contextType = AuthContext;
 
   constructor(props) {
     super(props);
@@ -30,6 +31,8 @@ class App extends Component {
   }
 
   componentWillMount() {
+
+    this.context.toggleAuth = this.loginHandler;
       // console.log('[App.js] inside componentWillMount()');
   }
 
@@ -84,9 +87,8 @@ class App extends Component {
   }
 
   loginHandler = () => {
-    this.setState((prevState, currentProps) => {
-      return { authenticated: !prevState.authenticated}
-    });
+    this.context.isAuth = !this.context.isAuth;
+    this.setState({authenticated: this.context.isAuth});
   }
 
   render() {
@@ -103,16 +105,13 @@ class App extends Component {
     return (
       <Aux>
         <Cards></Cards>
-        <AuthContext.Provider value={this.state.authenticated}>
-          <Cockpit 
-            appTitle={this.props.title}
-            showPersons={this.state.showPersons}
-            persons={this.state.persons} 
-            clicked={this.togglePersonsHandler}
-            loginClicked={this.loginHandler}
-            addClicked={this.addPersonHandler} />
-            { persons }
-        </AuthContext.Provider>
+        <Cockpit 
+          appTitle={this.props.title}
+          showPersons={this.state.showPersons}
+          persons={this.state.persons} 
+          clicked={this.togglePersonsHandler}
+          addClicked={this.addPersonHandler} />
+          { persons }
       </Aux>
     );
 
