@@ -32,11 +32,11 @@ class Cockpit extends Component
                     className={buttonClass.join(' ')}>
                     Toggle Persons
                 </button>
-                        {
-                            this.context.isAuth 
-                            ? (<button className={buttonClass.join(' ')} onClick={this.context.toggleAuth}>Logout</button>)
-                            : (<button className={buttonClass.join(' ')} onClick={this.context.toggleAuth}>Login</button>)
-                        }
+                {
+                    this.context.isAuth 
+                    ? (<button className={buttonClass.join(' ')} onClick={this.context.toggleAuth}>Logout</button>)
+                    : (<button className={buttonClass.join(' ')} onClick={this.context.toggleAuth}>Login</button>)
+                }
                 <button 
                     onClick={this.props.addClicked}
                     className={buttonClass.join(' ')}>

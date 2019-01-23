@@ -31,13 +31,24 @@ class App extends Component {
   }
 
   componentWillMount() {
+      console.log('[App.js] inside componentWillMount()');
+  }
 
-    this.context.toggleAuth = this.loginHandler;
-      // console.log('[App.js] inside componentWillMount()');
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('[App.js] Inside getDerivedStateFromProps',
+    nextProps,
+    prevState);
+
+    return prevState;
+  }
+
+  getSnapshotBeforeUpdate() {
+    console.log('[App.js] Inside getSnapshotBeforeUpdate');
   }
 
   componentDidMount() {
-      // console.log('[App.js] inside componentDidMount()');
+    this.context.toggleAuth = this.loginHandler;
+    console.log('[App.js] inside componentDidMount()');
   }
 
   nameChangedHandler = (event, id) => {
@@ -48,7 +59,6 @@ class App extends Component {
     const person = {
       ...this.state.persons[personIndex]
     };
-    //const person = Object.assign({}, this.state.persons[personIndex]);
     person.name = event.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
@@ -92,7 +102,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log('[App.js] inside render()');
+    console.log('[App.js] inside render()');
     let persons = null;
     if (this.state.showPersons) {
       persons = (

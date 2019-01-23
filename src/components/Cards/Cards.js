@@ -43,7 +43,6 @@ class Cards extends Component {
     }
 
     render = () => {
-        console.log('[Cards.js] render called');
         const cards = this.state.cards.map(
             c => {
                 return (
