@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './Cockpit.css'
 import Aux from "../../hoc/Auxiliary";
+import { AuthContext } from "../../containers/App";
 
 const cockpit = (props) => {
 
@@ -27,6 +28,13 @@ const cockpit = (props) => {
                 className={buttonClass.join(' ')}>
                 Toggle Persons
             </button>
+            <AuthContext.Consumer>
+            {
+                (auth) => 
+                    auth ? (<button className={buttonClass.join(' ')} onClick={props.loginClicked}>Logout</button>)
+                        : (<button className={buttonClass.join(' ')} onClick={props.loginClicked}>Login</button>)
+            }
+            </AuthContext.Consumer>
             <button 
                 onClick={props.addClicked}
                 className={buttonClass.join(' ')}>

@@ -8,15 +8,15 @@ font-weight: bold;
 }
 
 .Button {
-  border: 1px solid blue;
   padding: 16px;
-  background-color: green;
+  background-color: #28a745;
   box-shadow: 2px 2px 4px #aaa;
   font: inherit;
   color: white;
-  border-radius: 4px;
-  transition: background-color .3s, color .3s;
+  border-radius: 10px;
+  transition: all .3s, color .3s;
   margin-right: 8px;
+  width: 200px;
 }
 
 .Button:hover {
@@ -25,7 +25,7 @@ font-weight: bold;
 }
 
 .Button.Red {
-  background-color: red;
+  background-color: #dc3545;
 }
 
 .Button.Red:hover {

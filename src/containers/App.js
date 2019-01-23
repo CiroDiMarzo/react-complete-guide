@@ -7,6 +7,8 @@ import classes from "./App.css"
 
 import Cards from "../components/Cards/Cards";
 
+export const AuthContext = React.createContext(false)
+
 class App extends Component {
 
   constructor(props) {
@@ -19,7 +21,8 @@ class App extends Component {
       ],
       otherState: 'some other value',
       showPersons: false,
-      toggleClickedCounter: 0
+      toggleClickedCounter: 0,
+      authenticated: false 
     };
 
     // console.log('[App.js] inside constructor()');
@@ -80,6 +83,12 @@ class App extends Component {
     this.setState({persons : personsCopy})
   }
 
+  loginHandler = () => {
+    this.setState((prevState, currentProps) => {
+      return { authenticated: !prevState.authenticated}
+    });
+  }
+
   render() {
     // console.log('[App.js] inside render()');
     let persons = null;
@@ -94,13 +103,16 @@ class App extends Component {
     return (
       <Aux>
         <Cards></Cards>
-        <Cockpit 
-          appTitle={this.props.title}
-          showPersons={this.state.showPersons}
-          persons={this.state.persons} 
-          clicked={this.togglePersonsHandler}
-          addClicked={this.addPersonHandler} />
-        { persons }
+        <AuthContext.Provider value={this.state.authenticated}>
+          <Cockpit 
+            appTitle={this.props.title}
+            showPersons={this.state.showPersons}
+            persons={this.state.persons} 
+            clicked={this.togglePersonsHandler}
+            loginClicked={this.loginHandler}
+            addClicked={this.addPersonHandler} />
+            { persons }
+        </AuthContext.Provider>
       </Aux>
     );
 
